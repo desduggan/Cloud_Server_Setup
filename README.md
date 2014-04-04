@@ -1,5 +1,7 @@
 # Building a Cloud Server to run Django Applications
 
+Author: [Desmond Duggan](www.desmondrduggan.com)
+
 ## Step 1. Setup the Server
 
 The first step to get your Django site up and running is to get a cloud server. I recommend using Digital Ocean, but there are many options including Linode and Amazon AWS. 
