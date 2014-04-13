@@ -1,6 +1,7 @@
 # Building a Cloud Server to run Django Applications
 
 Author: [Desmond Duggan](http://www.desmondrduggan.com)
+Feedback Plz: [Email](mailto:desmondrduggan@gmail.com)
 
 ## Step 1. Setup the Server
 
