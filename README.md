@@ -210,7 +210,7 @@ Here we need to transfer ownership of the files and folders with the Django proe
 
 Setup the permissions with 775 like this:
 
-	sudo chmod -R 775 test/
+	sudo chmod -R 775 mysite/
 
 ##### Setup the Django database interface (MySQL)
 First, in Settings.py you need the databases setting:
@@ -249,7 +249,7 @@ Two: Use the `python manage.py collectstatic` command to put all your static fil
 In this step we need to tell Apache to serve the project using a virtualhost and wsgi file. 
 
 ##### Virtualhost
-To actually serve the projet, Apache needs to have a virtualhost. First, go to that directory on the filesystme:
+To actually serve the projet, Apache needs to have a virtualhost. First, go to that directory on the filesystem:
 	
 	$ cd /etc/apache2/sites-available
 	
