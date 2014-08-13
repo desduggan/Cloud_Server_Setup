@@ -2,9 +2,9 @@
 <html>
 
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Cloud server setup : A tutorial on how to setup an ubuntu cloud server to serve Django applications with a virtual host. " />
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Cloud server setup : A tutorial on how to setup an ubuntu cloud server to serve Django applications with a virtual host. ">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
@@ -121,7 +121,7 @@ $ mkdir ~/.ssh # make a hidden folder called ssh
 $ chmod 700 ~/.ssh/ # give appropriate permissions so only you have acccess
 $ ssh-keygen -t rsa # make your key
 
-$ ssh-add -l ~/.ssh/myKey # tell your system to use this key. Don't give the path to the .pub version. It's likely called id_rsa. 
+$ ssh-add ~/.ssh/myKey # tell your system to use this key. Don't give the path to the .pub version. It's likely called id_rsa. 
 </code></pre>
 
 <p>If you run into an error like <code>Could not open a connection to your authentication agent</code>, then add the following command to your <code>~/.profile</code></p>
