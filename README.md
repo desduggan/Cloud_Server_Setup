@@ -74,7 +74,7 @@ On the server, do the following to generate a ssh keypair.
 	$ chmod 700 ~/.ssh/ # give appropriate permissions so only you have acccess
 	$ ssh-keygen -t rsa # make your key
 	
-	$ ssh-add -l ~/.ssh/myKey # tell your system to use this key. Don't give the path to the .pub version. It's likely called id_rsa. 
+	$ ssh-add ~/.ssh/myKey # tell your system to use this key. Don't give the path to the .pub version. It's likely called id_rsa. 
 	
 If you run into an error like `Could not open a connection to your authentication agent`, then add the following command to your `~/.profile`
 
