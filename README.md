@@ -325,5 +325,10 @@ Then, reload and restart apache
 ## Conclusion
 
 To conclude, this is the process I used to get a server up and running to serve my Django apps. Please let me know if I missed something or if you have any questions: [email](mailto:desmondrduggan@gmail.com). 
+
+Resources
+
+- http://stackoverflow.com/questions/20591889/site-does-not-exist-error-for-a2ensite
+- https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-14-04-lts
 	
 
