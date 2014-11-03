@@ -255,7 +255,7 @@ To actually serve the projet, Apache needs to have a virtualhost. First, go to t
 	
 Then, make your virtual host:
 
-	$ sudo vi mysite
+	$ sudo vi mysite.conf
 	
 And make it look like this, but with your correct info: 
 
@@ -299,13 +299,28 @@ The final step is to configure this application wsgi file.
 	activate_env=os.path.expanduser("/home/user/.virtualenvs/mysiteEnv/bin/activate_this.py")
 	execfile(activate_env, dict(__file__=activate_env))
 
-	import django.core.handlers.wsgi
-	application = django.core.handlers.wsgi.WSGIHandler()
+	# django 1.7
+	from django.core.wsgi import get_wsgi_application
+	application = get_wsgi_application()
+
+	# django 1.6
+	# import django.core.handlers.wsgi
+	# application = django.core.handlers.wsgi.WSGIHandler()
 	
 	
+##### 
+
+Lastly, enable the virtualhost you created above by typing the following command:
 	
+	$ sudo a2ensite mysite # this refers to mysite.conf in sites-available
 	
-And now your done! 
+This will "enable" your virtualhost living in sites-available and bring it into /etc/apache2/sites-enabled. 
+
+Then, reload and restart apache
+
+	$ sudo service apache2 reload
+	$ sudo service apache2 restart
+
 
 ## Conclusion
 
