@@ -231,7 +231,9 @@ $ pip install mysql-python
 
 <p>Boom! Done. </p>
 
-<hr><h2>
+<hr>
+
+<h2>
 <a name="step-2-get-your-project-on-the-server" class="anchor" href="#step-2-get-your-project-on-the-server"><span class="octicon octicon-link"></span></a>Step 2. Get your project on the server</h2>
 
 <p>Once you have a working copy of your project on your local machine, you have to actually get the files up on the server. There are lots of ways to do this, but I recommend one of the following: </p>
@@ -257,7 +259,9 @@ $ pip install mysql-python
 
 <p>The other option is to use a program like Cyber Duck or FileZilla to copy files over. Download the client, connect to your server with your ssh key or password, and transfer the files. </p>
 
-<hr><h2>
+<hr>
+
+<h2>
 <a name="step-3-prepare-the-project-for-production" class="anchor" href="#step-3-prepare-the-project-for-production"><span class="octicon octicon-link"></span></a>Step 3. Prepare the project for production</h2>
 
 <p>In this step, we make a symbolic link for a folder in /var/www/ to the project in your home directory. This is the location that Apache looks to serve files from. This is a crucial step and it's very important to get all of the permissions and file ownership correct. </p>
@@ -324,7 +328,9 @@ $ sudo chown -R root:www-data mysite/
 
 <p>Two: Use the <code>python manage.py collectstatic</code> command to put all your static files for your apps in one place.  This is usually mysite/static/. See <a href="https://docs.djangoproject.com/en/1.6/howto/static-files/">here</a> for more info. </p>
 
-<hr><h2>
+<hr>
+
+<h2>
 <a name="serving-your-django-projects" class="anchor" href="#serving-your-django-projects"><span class="octicon octicon-link"></span></a>Serving Your Django Projects</h2>
 
 <p>In this step we need to tell Apache to serve the project using a virtualhost and wsgi file. </p>
@@ -339,7 +345,7 @@ $ sudo chown -R root:www-data mysite/
 
 <p>Then, make your virtual host:</p>
 
-<pre><code>$ sudo vi mysite
+<pre><code>$ sudo vi mysite.conf
 </code></pre>
 
 <p>And make it look like this, but with your correct info: </p>
@@ -386,16 +392,39 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'Mysite.settings'
 activate_env=os.path.expanduser("/home/user/.virtualenvs/mysiteEnv/bin/activate_this.py")
 execfile(activate_env, dict(__file__=activate_env))
 
-import django.core.handlers.wsgi
-application = django.core.handlers.wsgi.WSGIHandler()
+# django 1.7
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
+
+# django 1.6
+# import django.core.handlers.wsgi
+# application = django.core.handlers.wsgi.WSGIHandler()
 </code></pre>
 
-<p>And now your done! </p>
+<p>Lastly, enable the virtualhost you created above by typing the following command:</p>
+
+<pre><code>$ sudo a2ensite mysite # this refers to mysite.conf in sites-available
+</code></pre>
+
+<p>This will "enable" your virtualhost living in sites-available and bring it into /etc/apache2/sites-enabled. </p>
+
+<p>Then, reload and restart apache</p>
+
+<pre><code>$ sudo service apache2 reload
+$ sudo service apache2 restart
+</code></pre>
 
 <h2>
 <a name="conclusion" class="anchor" href="#conclusion"><span class="octicon octicon-link"></span></a>Conclusion</h2>
 
 <p>To conclude, this is the process I used to get a server up and running to serve my Django apps. Please let me know if I missed something or if you have any questions: <a href="mailto:desmondrduggan@gmail.com">email</a>. </p>
+
+<p>Resources</p>
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/20591889/site-does-not-exist-error-for-a2ensite">http://stackoverflow.com/questions/20591889/site-does-not-exist-error-for-a2ensite</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-14-04-lts">https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-14-04-lts</a></li>
+</ul>
       </section>
     </div>
 
